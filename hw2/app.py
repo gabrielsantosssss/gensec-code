@@ -143,7 +143,7 @@ def build_database():
 
 def build_chain():
     """Build the retrieval-augmented generation chain used to answer questions."""
-    llm = ChatGoogleGenerativeAI(model=os.getenv("GOOGLE_MODEL", "gemini-2.0-flash"))
+    llm = ChatGoogleGenerativeAI(model=os.getenv("GOOGLE_MODEL", "gemini-3.6-flash"))
     retriever = vectorstore.as_retriever()
 
     prompt = ChatPromptTemplate.from_template(
@@ -160,8 +160,11 @@ Answer:"""
     )
 
     def format_docs(docs):
-        """Join retrieved document contents into one prompt context string."""
-        return "\n\n".join(doc.page_content for doc in docs)
+        """Join retrieved documents, each labeled with its source, into one context string."""
+        return "\n\n".join(
+            f"Source: {doc.metadata.get('source', 'unknown')}\n{doc.page_content}"
+            for doc in docs
+        )
 
     return (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
