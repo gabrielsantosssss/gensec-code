@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Prompt Injection",
+    "content": "Prompt injection is an attack where untrusted input embedded in a document or webpage tricks a language model into ignoring its original instructions and following the attacker's instructions instead. RAG applications are especially exposed because retrieved documents are fed directly into the model's context window."
+  },
+  {
+    "title": "RAG Poisoning",
+    "content": "RAG poisoning happens when an attacker plants malicious or misleading content in a data source that a retrieval-augmented generation system indexes, so that later queries retrieve and surface the poisoned content as if it were trustworthy."
+  },
+  {
+    "title": "Vector Embeddings",
+    "content": "A vector embedding is a numeric representation of text produced by an embedding model, positioned so that semantically similar text ends up close together in vector space. RAG systems compare a query's embedding against stored document embeddings to find relevant context."
+  },
+  {
+    "title": "Chunking",
+    "content": "Chunking splits long documents into smaller overlapping pieces before embedding them, because embedding models and vector similarity search work best on focused passages rather than entire documents."
+  },
+  {
+    "title": "Least Privilege for Agents",
+    "content": "The principle of least privilege says an AI agent should only be granted the minimum permissions and tool access needed to complete its task, which limits the damage a prompt injection or a compromised tool can cause."
+  }
+]
