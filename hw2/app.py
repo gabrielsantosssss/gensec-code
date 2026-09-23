@@ -116,7 +116,14 @@ def load_json(directory):
             content_key="content",
             metadata_func=_json_metadata,
         )
-        docs.extend(loader.load())
+        # Skip files that can't be read or don't match the expected
+        # [{"title": ..., "content": ...}] shape. Invalid JSON, bad
+        # encodings, jq mismatches and missing content keys all raise
+        # ValueError subclasses.
+        try:
+            docs.extend(loader.load())
+        except (OSError, ValueError) as e:
+            print(f"Warning: skipping {filename}: {e}")
     load_docs(docs)
 
 
