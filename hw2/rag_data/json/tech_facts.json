@@ -18,5 +18,9 @@
   {
     "title": "Least Privilege for Agents",
     "content": "The principle of least privilege says an AI agent should only be granted the minimum permissions and tool access needed to complete its task, which limits the damage a prompt injection or a compromised tool can cause."
+  },
+  {
+    "title": "Retrieval-Augmented Generation",
+    "content": "Retrieval-augmented generation (RAG) is a technique that improves a language model's answers by first retrieving relevant passages from an external knowledge source, such as a vector database of embedded documents, and then adding those passages to the model's prompt as context. This lets the model answer questions about private or up-to-date information it was never trained on and reduces hallucination, though it also means the model trusts whatever the retriever returns."
   }
 ]
