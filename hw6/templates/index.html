@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>Security Docs RAG</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>Security Docs Search</h1>
+    <p class="sub">Ask a question; answers are grounded in the OWASP / NIST / CVE documents you've ingested.</p>
+
+    <form id="ask-form" autocomplete="off">
+      <label for="query" class="visually-hidden">Question</label>
+      <input id="query" name="query" type="text" maxlength="{{ max_chars }}" required
+             placeholder="e.g. How should passwords be stored?">
+      <button type="submit" id="submit">Ask</button>
+    </form>
+
+    <p id="status" role="status"></p>
+
+    <section id="answer-section" hidden>
+      <h2>Answer</h2>
+      <div id="answer"></div>
+    </section>
+
+    <section id="sources-section" hidden>
+      <h2>Sources</h2>
+      <ol id="sources"></ol>
+    </section>
+  </main>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
